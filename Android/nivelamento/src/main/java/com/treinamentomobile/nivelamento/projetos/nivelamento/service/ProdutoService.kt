@@ -148,7 +148,7 @@ class ProdutoService {
         val id = lerIntObrigatorio(scanner, "Informe o ID: ")
 
         val removido = produtos.removeIf { it.id == id }
-        if (removido) println("✅ Produto removido com sucesso!")
+        if (removido) println("Produto removido com sucesso!")
         else println("Produto não encontrado.")
     }
 

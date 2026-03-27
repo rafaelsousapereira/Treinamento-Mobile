@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Nivelamento"
+rootProject.name = "Interface"
 include(":app")
-include(":nivelamento")
