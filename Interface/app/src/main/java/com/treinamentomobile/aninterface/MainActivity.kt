@@ -23,7 +23,6 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
-
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -67,7 +66,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
 import com.treinamentomobile.aninterface.ui.theme.InterfaceTheme
 import kotlin.random.Random
 
@@ -90,34 +88,6 @@ class MainActivity : ComponentActivity() {
 }
 
 // Atividades
-
-@Composable
-fun ExibirModal(exibirModal: Boolean, nome: String, media: Double) {
-    var exibir by remember { mutableStateOf(false) }
-
-    if (exibir) {
-        AlertDialog(
-            onDismissRequest = { exibir = false },
-            title = {
-                Text(
-                    text = "$nome, obteve média: ${"%.2f".format(media)}",
-                    modifier = Modifier
-                        .padding(10.dp)
-                )
-            },
-//                    text = { Text("Hello World!!!") },
-            confirmButton = { Button(onClick = { exibir = false }) { Text("Ok") } },
-            dismissButton = {
-                Button(
-                    onClick = { exibir = false }
-                ) {
-                    Text("Fechar")
-                }
-            }
-        )
-    }
-}
-
 @Composable
 fun Atividade4(modifier: Modifier) {
     var nome by remember { mutableStateOf("") }
@@ -127,7 +97,9 @@ fun Atividade4(modifier: Modifier) {
     var media by remember { mutableStateOf(0.0) }
     var situacao by remember { mutableStateOf("") }
     var exibir by remember { mutableStateOf(false) }
-    var habilitarBotao by remember { mutableStateOf(true) }
+    var habilitarBotao by remember { mutableStateOf(false) }
+
+    var nomeValido = nome.length >= 2
 
     Column(
         modifier = modifier.fillMaxSize(),
@@ -141,7 +113,16 @@ fun Atividade4(modifier: Modifier) {
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
             ),
-            modifier = Modifier.padding(10.dp)
+            modifier = Modifier.padding(10.dp),
+            trailingIcon = {
+                if (nomeValido) {
+                    Icon(
+                        imageVector = Icons.Default.Check,
+                        contentDescription = "Nome válido",
+                        tint = Color.Green
+                    )
+                }
+            }
         )
         TextField(
             value = nota1,
@@ -150,7 +131,16 @@ fun Atividade4(modifier: Modifier) {
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number
             ),
-            modifier = Modifier.padding(10.dp)
+            modifier = Modifier.padding(10.dp),
+            trailingIcon = {
+                if (nota1.isNotEmpty()) {
+                    Icon(
+                        imageVector = Icons.Default.Check,
+                        contentDescription = "Nome válido",
+                        tint = Color.Green
+                    )
+                }
+            }
         )
         TextField(
             value = nota2,
@@ -159,7 +149,16 @@ fun Atividade4(modifier: Modifier) {
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number
             ),
-            modifier = Modifier.padding(10.dp)
+            modifier = Modifier.padding(10.dp),
+            trailingIcon = {
+                if (nota2.isNotEmpty()) {
+                    Icon(
+                        imageVector = Icons.Default.Check,
+                        contentDescription = "Nome válido",
+                        tint = Color.Green
+                    )
+                }
+            }
         )
         TextField(
             value = nota3,
@@ -168,7 +167,17 @@ fun Atividade4(modifier: Modifier) {
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number
             ),
-            modifier = Modifier.padding(10.dp)
+            modifier = Modifier.padding(10.dp),
+            trailingIcon = {
+                if (nota3.isNotEmpty()) {
+                    Icon(
+                        imageVector = Icons.Default.Check,
+                        contentDescription = "Nome válido",
+                        tint = Color.Green
+                    )
+                    habilitarBotao = true
+                }
+            }
         )
         Button(
             onClick = {
