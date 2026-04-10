@@ -127,7 +127,7 @@ fun Atividade4(modifier: Modifier) {
     var media by remember { mutableStateOf(0.0) }
     var situacao by remember { mutableStateOf("") }
     var exibir by remember { mutableStateOf(false) }
-    var habilitarBotao by remember { mutableStateOf(true) }
+//    var habilitarBotao by remember { mutableStateOf(true) }
 
     Column(
         modifier = modifier.fillMaxSize(),
@@ -182,7 +182,7 @@ fun Atividade4(modifier: Modifier) {
                     exibir = true
                 }
             },
-            enabled = habilitarBotao // ver essa lógica com calma depois
+            //enabled = habilitarBotao // ver essa lógica com calma depois
         ) {
             Text("Calcular Média")
         }
