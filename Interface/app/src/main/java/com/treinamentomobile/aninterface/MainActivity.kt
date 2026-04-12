@@ -9,9 +9,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -76,7 +78,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             InterfaceTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Atividade4(
+                    Atividade5(
                         modifier = Modifier
                             .padding(innerPadding)
                             .background(Color.White)
@@ -88,6 +90,46 @@ class MainActivity : ComponentActivity() {
 }
 
 // Atividades
+@Composable
+fun Atividade5(modifier: Modifier) {
+
+    val lista = listOf<String>(
+        "Nike"
+    )
+
+    // Estrutura
+
+
+    Column() {
+        Card(
+            modifier = Modifier
+                .padding(
+                    horizontal = 20.dp,
+                    vertical = 10.dp
+                )
+                .height(220.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.LightGray),
+
+            ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.tenis_vans),
+                    contentDescription = "Imagem de tênis Vans",
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .size(100.dp)
+                )
+                Text("Tênis Vans - Preto")
+            }
+
+        }
+    }
+}
+
 @Composable
 fun Atividade4(modifier: Modifier) {
     var nome by remember { mutableStateOf("") }
