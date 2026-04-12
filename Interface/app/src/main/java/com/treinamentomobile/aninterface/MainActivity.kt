@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -131,6 +132,33 @@ fun Atividade5(modifier: Modifier) {
 }
 
 @Composable
+fun ExibirModal(exibirModal: Boolean, nome: String, media: Double) {
+    var exibir by remember { mutableStateOf(false) }
+
+    if (exibir) {
+        AlertDialog(
+            onDismissRequest = { exibir = false },
+            title = {
+                Text(
+                    text = "$nome, obteve média: ${"%.2f".format(media)}",
+                    modifier = Modifier
+                        .padding(10.dp)
+                )
+            },
+//                    text = { Text("Hello World!!!") },
+            confirmButton = { Button(onClick = { exibir = false }) { Text("Ok") } },
+            dismissButton = {
+                Button(
+                    onClick = { exibir = false }
+                ) {
+                    Text("Fechar")
+                }
+            }
+        )
+    }
+}
+
+@Composable
 fun Atividade4(modifier: Modifier) {
     var nome by remember { mutableStateOf("") }
     var nota1 by remember { mutableStateOf("") }
@@ -233,7 +261,7 @@ fun Atividade4(modifier: Modifier) {
                     exibir = true
                 }
             },
-            enabled = habilitarBotao // ver essa lógica com calma depois
+            //enabled = habilitarBotao // ver essa lógica com calma depois
         ) {
             Text("Calcular Média")
         }
