@@ -22,9 +22,9 @@ Módulo avançado com desenvolvimento de aplicações Android utilizando **Jetpa
 
 | Projeto | Descrição |
 |---------|-----------|
-| [Android/nivelamento](./Android/nivelamento) | Fundamentos de Kotlin — CRUD de produtos via console com POO, Null Safety e Elvis Operator |
+| [Android/nivelamento](./Android/nivelamento) | Atividade - Fundamentos de Kotlin — CRUD de produtos via console com POO, Null Safety e Elvis Operator |
 | [Interface](./Interface) | Introdução ao Jetpack Compose — construção de layouts e componentes de UI |
-| [GestorFinanceiro](./GestorFinanceiro) | Aplicação de Gestor Financeiro com Jetpack Compose |
+| [GestorFinanceiro](./GestorFinanceiro) | Atividade - Aplicação de Gestor Financeiro com Jetpack Compose |
 | [Navegacao](./Navegacao) | Navegação entre telas com Jetpack Compose Navigation |
 | [NavegacaoDrawer](./NavegacaoDrawer) | Implementação do padrão Navigation Drawer |
 | [NavegacaoMenuBotton](./NavegacaoMenuBotton) | Implementação do padrão Bottom Navigation |
