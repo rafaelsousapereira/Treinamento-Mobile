@@ -1,8 +1,9 @@
-package com.treinamentomobile.crudapi.model
+package com.treinamentomobile.crudapi.data.model
 
 import java.util.Date
 
 data class Contact(
+    val id: Int,
     val name: String,
     val email: String,
     val phone: String,

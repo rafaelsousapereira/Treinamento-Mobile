@@ -19,5 +19,5 @@ interface StudentService {
     suspend fun createStudent(@Body student: Student): Student
 
     @DELETE("students/{id}")
-    suspend fun removeStudent(@Path("id") id: Int)
+    suspend fun removeStudent(@Path("id") id: Int?)
 }
