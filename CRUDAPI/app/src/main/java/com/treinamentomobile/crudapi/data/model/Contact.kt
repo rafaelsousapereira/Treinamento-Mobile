@@ -1,14 +1,18 @@
 package com.treinamentomobile.crudapi.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.Date
 
+@Entity(tableName = "contacts")
 data class Contact(
-    val id: Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val name: String,
     val email: String,
     val phone: String,
     val birthday: Date,
-    val cep: String,
+    val cep: String? = null,
     val street: String,
     val number: Int,
     val complement: String,

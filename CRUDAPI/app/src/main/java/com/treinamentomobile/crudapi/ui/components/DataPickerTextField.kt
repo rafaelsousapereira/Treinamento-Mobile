@@ -30,23 +30,23 @@ fun DatePickerFieldToModal(
     onValueChange: (String) -> Unit,
     label: @Composable () -> Unit
 ) {
-    var selectedDate by remember { mutableStateOf<Long?>(null) }
     var showModal by remember { mutableStateOf(false) }
 
     OutlinedTextField(
-        value = selectedDate?.let { convertMillisToDate(it) } ?: "",
+        value = value,
         onValueChange = { },
-        label = { Text("Data de Nascimento") },
-        placeholder = { Text("MM/DD/YYYY") },
+        label = label,
+        placeholder = { Text("DD/MM/YYYY") },
         trailingIcon = {
             Icon(
                 imageVector = Icons.Default.DateRange,
                 contentDescription = "Selecione sua Data de Nascimento"
             )
         },
+        readOnly = true,
         modifier = modifier
             .fillMaxWidth()
-            .pointerInput(selectedDate) {
+            .pointerInput(value) {
                 awaitEachGesture {
                     awaitFirstDown(pass = PointerEventPass.Initial)
                     val upEvent = waitForUpOrCancellation(pass = PointerEventPass.Initial)
@@ -55,18 +55,21 @@ fun DatePickerFieldToModal(
                     }
                 }
             }
-            .padding(horizontal = 46.dp)
+            .padding(horizontal = 36.dp)
     )
 
     if (showModal) {
         DatePickerModal(
-            onDateSelected = { selectedDate = it },
+            onDateSelected = { 
+                it?.let { onValueChange(convertMillisToDate(it)) }
+                showModal = false
+            },
             onDismiss = { showModal = false }
         )
     }
 }
 
 fun convertMillisToDate(millis: Long): String {
-    val formatter = SimpleDateFormat("MM/dd/yyyy", Locale.getDefault())
+    val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     return formatter.format(Date(millis))
 }
